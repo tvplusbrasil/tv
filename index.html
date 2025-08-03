@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV Plus - Streaming Premium por apenas R$ 30/mês</title>
+    <meta name="description" content="TV Plus: Filmes, séries e canais de TV por R$ 30/mês. Teste gratuito disponível. Compatível com Samsung, LG e Android.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header com parceiros */
+        .partners-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .partners-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .partner-logo {
+            height: 50px;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            font-weight: 600;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .partners-text {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('img01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Parallax effect enhancement */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('img01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            will-change: transform;
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero-offer {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            background: rgba(255, 107, 107, 0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            padding: 4px;
+        }
+
+        /* Seções */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Compatibility Section */
+        .compatibility {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .device-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .device-card:hover {
+            transform: scale(1.05);
+        }
+
+        .device-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .device-card h4 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .device-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Content Grid */
+        .content-showcase {
+            background: #fff;
+        }
+
+        .content-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .content-category {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .content-category h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .content-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .content-item {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 50px 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .price-amount {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .price-period {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .price-features li {
+            padding: 10px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .free-trial {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        /* WhatsApp Fixed Button */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #25d366, #128c7e);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            font-size: 1.5rem;
+        }
+
+        .whatsapp-fixed:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-price {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .partners-container {
+                gap: 15px;
+            }
+
+            .partner-logo {
+                height: 40px;
+                min-width: 100px;
+                font-size: 0.9rem;
+            }
+
+            .price-amount {
+                font-size: 3rem;
+            }
+
+            .whatsapp-fixed {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Intersection Observer Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header com Parceiros -->
+    <header class="partners-header">
+        <div class="container">
+            <p class="partners-text">Em parceria com:</p>
+            <div class="partners-container">
+                <div class="partner-logo">UniTV</div>
+                <div class="partner-logo">XCloudTV</div>
+                <div class="partner-logo">BabuTV</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="tvplus.png" alt="TV Plus" style="max-width: 300px; height: auto; margin-bottom: 20px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));" />
+                <p class="hero-subtitle">O melhor do entretenimento na palma da sua mão</p>
+                <div class="hero-price">R$ 30<span style="font-size: 1.5rem;">/mês</span></div>
+                <div class="hero-offer">✨ TESTE GRATUITO DISPONÍVEL ✨</div>
+                <a href="https://wa.me/5519974289455?text=Olá! Gostaria de conhecer o TV Plus e fazer o teste gratuito!" class="cta-button" target="_blank">
+                    📱 Teste Grátis Agora!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Por que escolher o TV Plus?</h2>
+            <p class="section-subtitle animate-on-scroll">Desfrute de uma experiência de streaming única com qualidade HD e estabilidade garantida</p>
+            
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎬</div>
+                    <h3>Filmes e Séries</h3>
+                    <p>Catálogo completo com os melhores filmes e séries nacionais e internacionais,&nbsp; atualizados, dublados e legendados.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">📺</div>
+                    <h3>TV ao Vivo</h3>
+                    <p>Canais abertos e fechados disponíveis 24/7 com transmissão em tempo real</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Alta Estabilidade</h3>
+                    <p>Serviço confiável com máxima estabilidade e qualidade de imagem HD</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Conteúdo Atualizado</h3>
+                    <p>Novos filmes, séries e programas adicionados diariamente</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h3>Para Toda Família</h3>
+                    <p>Conteúdo para todos os gostos e idades, do infantil ao adulto</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">⚽</div>
+                    <h3>Esportes e Futebol</h3>
+                    <p>Canais esportivos com jogos ao vivo e programação esportiva completa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibilidade -->
+    <section class="section compatibility">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Compatível com seus dispositivos</h2>
+            <p class="section-subtitle animate-on-scroll">Assista onde e quando quiser com total compatibilidade</p>
+            
+            <div class="devices-grid">
+                <div class="device-card animate-on-scroll">
+                  <div class="device-icon">📱</div>
+                    <h4>Celular, Tablet e outros</h4>
+                    <p>Compatível com&nbsp;dispositivos Android</p>
+                </div>
+                <div class="device-card animate-on-scroll">
+                    <div class="device-icon">📺</div>
+                    <h4>Smart TV</h4>
+                    <p>&nbsp; &nbsp;Samsung, LG,&nbsp;Panasonic e outras</p>
+                </div>
+                <div class="device-card animate-on-scroll">
+                    <div class="device-icon">🤖</div>
+                    <h4>Smart TV e TV Box Android</h4>
+                    <p>TCL, Sony, Philips,&nbsp;Xiaomi, Projetores e outros</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo Disponível -->
+    <section class="section content-showcase">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Conteúdo de Primeira Qualidade</h2>
+            <p class="section-subtitle animate-on-scroll">Acesso ao mesmo conteúdo das principais plataformas de streaming e canais de TV</p>
+            
+            <div class="content-categories">
+                <div class="content-category animate-on-scroll">
+                    <h4>🎬 Plataformas de Streaming</h4>
+                    <div class="content-logos">
+                        <div class="content-item">Netflix</div>
+                        <div class="content-item">Prime Video</div>
+                        <div class="content-item">Disney+</div>
+                        <div class="content-item">HBO Max</div>
+                        <div class="content-item">Paramount+</div>
+                        <div class="content-item">Apple TV+</div>
+                        <div class="content-item">Globoplay</div>
+                        <div class="content-item">e muito mais...</div>
+                    </div>
+                </div>
+                
+                <div class="content-category animate-on-scroll">
+                    <h4>📺 Canais Brasileiros</h4>
+                    <div class="content-logos">
+                        <div class="content-item">TV Globo</div>
+                        <div class="content-item">SBT</div>
+                        <div class="content-item">Record TV</div>
+                        <div class="content-item">Band</div>
+                        <div class="content-item">RedeTV!</div>
+                        <div class="content-item">TV Cultura</div>
+                        <div class="content-item">e muito mais...</div>
+                    </div>
+                </div>
+                
+                <div class="content-category animate-on-scroll">
+                    <h4>⚽ Canais Esportivos</h4>
+                    <div class="content-logos">
+                        <div class="content-item">ESPN Brasil</div>
+                        <div class="content-item">SportTV</div>
+                        <div class="content-item">Fox Sports</div>
+                        <div class="content-item">Premiere</div>
+                        <div class="content-item">Globo Esporte</div>
+                        <div class="content-item">UFC</div>
+                        <div class="content-item">e muito mais...</div>
+                    </div>
+                </div>
+
+                <div class="content-category animate-on-scroll">
+                    <h4>🎭 Entretenimento</h4>
+                    <div class="content-logos">
+                        <div class="content-item">Discovery</div>
+                        <div class="content-item">History</div>
+                        <div class="content-item">National Geographic</div>
+                        <div class="content-item">Comedy Central</div>
+                        <div class="content-item">Cartoon Network</div>
+                        <div class="content-item">Disney Channel</div>
+                        <div class="content-item">e muito mais...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section class="section pricing">
+        <div class="container">
+            <!--<h2	 class="section-title" style="color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6);">-->
+              <p><strong><font size="+4">Plano Único e Simples</font></strong></p>
+            </h2>
+            
+            <div class="pricing-card animate-on-scroll">
+                <div class="free-trial">🎁 TESTE GRATUITO</div>
+                <div class="price-amount">R$ 30</div>
+                <div class="price-period">por mês</div>
+                
+                <ul class="price-features">
+                    <li>✅ Filmes e séries ilimitados</li>
+                    <li>✅ Canais de TV ao vivo</li>
+                    <li>✅ Qualidade HD</li>
+                    <li>✅ Compatível com Smart TVs e outros</li>
+                    <li>✅ Conteúdo atualizado diariamente</li>
+                    <li>✅ Suporte técnico incluído</li>
+                </ul>
+                
+                <a href="https://wa.me/5519974289455?text=Olá! Quero contratar o TV Plus e começar meu teste gratuito!" class="cta-button" style="background: white; color: #667eea;" target="_blank">
+                    📱 Contratar Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy;  TV Plus. Todos os direitos reservados.</p>
+            <p>Entre em contato: <strong>(19) 9 7428-9455</strong></p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Fixed Button -->
+    <a href="https://wa.me/5519974289455?text=Olá! Tenho interesse no TV Plus!" class="whatsapp-fixed" target="_blank">
+        💬
+    </a>
+
+    <script>
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animate-on-scroll class
+        document.addEventListener('DOMContentLoaded', () => {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            animateElements.forEach(el => observer.observe(el));
+        });
+
+        // Enhanced Parallax effect for hero background
+        let ticking = false;
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero');
+            const heroHeight = parallax ? parallax.offsetHeight : 0;
+            
+            if (parallax && scrolled < heroHeight) {
+                const speed = scrolled * 0.5;
+                parallax.style.backgroundPosition = `center calc(50% + ${speed}px)`;
+                
+                // Additional parallax for the ::before pseudo-element effect
+                const rate = Math.floor(scrolled * -0.3);
+                parallax.style.transform = `translate3d(0, ${rate}px, 0)`;
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+
+        // WhatsApp button click tracking
+        document.querySelectorAll('a[href*="wa.me"]').forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('WhatsApp button clicked');
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.feature-card, .device-card, .content-category').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Preload hero image
+        const heroImg = new Image();
+        heroImg.src = 'img01.jpg';
+        
+        // Preload logo image
+        const logoImg = new Image();
+        logoImg.src = 'tvplus.png';
+
+        // Mobile optimization
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile) {
+            document.body.classList.add('mobile');
+        }
+
+        // Performance optimization - reduce animations on slower devices
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduceMotion) {
+            document.documentElement.style.setProperty('--animation-duration', '0s');
+        }
+    </script>
+</body>
+</html>
